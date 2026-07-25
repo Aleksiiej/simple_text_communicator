@@ -24,8 +24,11 @@ qt_add_qml_module(war
     VERSION 1.0
     QML_FILES qml/main.qml
               qml/Button.qml
+              qml/Chat.qml
               qml/Client.qml
+              qml/StatusBar.qml
               qml/TcpServer.qml
+              qml/TextBar.qml
 )
 
 target_link_libraries(war PRIVATE Qt6::Quick)
