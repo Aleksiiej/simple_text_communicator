@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 
 
 Rectangle
@@ -22,5 +23,6 @@ Rectangle
             text: message
         }
         clip: true
+        ScrollBar.vertical: ScrollBar { }
     }
 }
