@@ -4,7 +4,6 @@ import QtQuick
 Rectangle
 {
     id: chatRect
-    height: 50
     color: "lightblue"
 
     property alias chatListModel: chatListModel

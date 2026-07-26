@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 
 Window 
 {
@@ -17,7 +18,7 @@ Window
     property var client: null
     property alias chatListModel: chat.chatListModel
 
-    Item
+    ColumnLayout
     {
         id: ui
         anchors.fill: parent
@@ -27,36 +28,24 @@ Window
         {
             id: statusBar
 
-            anchors
-            {
-                top: parent.top
-                left: parent.left
-                right: parent.right
-            }
+            Layout.alignment: Qt.AlignTop
+            Layout.fillWidth: true
         }
 
         Chat
         {
             id: chat
 
-            anchors
-            {
-                bottom: textBar.top
-                left: parent.left
-                right: parent.right
-            }
+            Layout.fillHeight: true
+            Layout.fillWidth: true
         }
 
         TextBar
         {
             id: textBar
 
-            anchors
-            {
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }
+            Layout.alignment: Qt.AlignBottom
+            Layout.fillWidth: true
         }
     }
 }   
