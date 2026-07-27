@@ -9,6 +9,13 @@ Rectangle
 
     property int buttonWidth: 60
 
+    signal clearTextBar()
+
+    onClearTextBar:
+    {
+        sendMsgTextArea.clear()
+    }
+
     TextArea
     {
         id: sendMsgTextArea
@@ -19,9 +26,10 @@ Rectangle
             bottom: parent.bottom
             left: parent.left
         }
-        placeholderText: qsTr("Enter text here")
+        placeholderText: "Enter text here"
         placeholderTextColor: "black"
         color: "black"
+        enabled: ui.state != "Disconnected"
     }
 
     Rectangle
@@ -45,7 +53,7 @@ Rectangle
         {
             id: sendMsgMouseArea
             anchors.fill: parent
-            enabled: ui.state != "Disconnected" ? true : false
+            enabled: ui.state != "Disconnected"
             onClicked: 
             {
                 if(server)

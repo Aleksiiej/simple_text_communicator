@@ -9,6 +9,8 @@ Rectangle
     height: 28
     color: "lightblue"
 
+    signal clearTextBar()
+
     RowLayout
     {
         id: statusBar
@@ -18,6 +20,7 @@ Rectangle
         {
             id: createServerButton
             text: ui.state == "Server" ? "Close Server" : "Create Server"
+            enabled: ui.state != "Client"
             onClicked:
             {
                 if(!server)
@@ -36,6 +39,7 @@ Rectangle
                     server.destroy()
                     ui.state = "Disconnected"
                     chatListModel.append({message: "Server removed"})
+                    clearTextBar()
                 }
             }
         }
@@ -51,9 +55,9 @@ Rectangle
             {
                 id: usernameTextArea
                 anchors.fill: parent
-                placeholderText: qsTr("Enter username")
+                placeholderText: "Enter username"
                 placeholderTextColor: "black"
-                enabled: ui.state == "Disconnected" ? true : false
+                enabled: ui.state == "Disconnected"
                 color: "black"
             }
         }
@@ -69,9 +73,9 @@ Rectangle
             {
                 id: serverAddressTextArea
                 anchors.fill: parent
-                placeholderText: qsTr("Enter IP address")
+                placeholderText: "Enter IP address"
                 placeholderTextColor: "black"
-                enabled: ui.state == "Disconnected" ? true : false
+                enabled: ui.state == "Disconnected"
                 color: "black"
             }
         }
@@ -80,6 +84,7 @@ Rectangle
         {
             id: joinServerButton
             text: ui.state == "Client" ? "Disconnect" : "Join Server"
+            enabled: ui.state != "Server"
             onClicked:
             {
                 if(!client)
@@ -105,6 +110,7 @@ Rectangle
                     client.destroy()
                     ui.state = "Disconnected"
                     chatListModel.append({message: "Disconnected from server"})
+                    clearTextBar()
                 }
             }
         }

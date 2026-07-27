@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Window 
+ApplicationWindow 
 {
     id: root
     visible: true
@@ -23,6 +23,8 @@ Window
         id: ui
         anchors.fill: parent
         property string state: "Disconnected"
+
+        signal clearTextBar()
 
         StatusBar
         {
@@ -46,6 +48,16 @@ Window
 
             Layout.alignment: Qt.AlignBottom
             Layout.fillWidth: true
+        }
+
+        Connections
+        {
+            target: statusBar
+
+            function onClearTextBar()
+            {
+                textBar.clearTextBar()
+            }
         }
     }
 }   
